@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index,follow">
+    <meta name="description" content="MBTI test">
+    <meta property="og:type" content="website"> 
+    <meta property="og:title" content="The DOGGY Type Test">
+    <meta property="og:description" content="MBTI test">
+    <meta property="og:image" content="ENFP.png">
+    <meta property="og:url" content="https://brayblog.com/wp/">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="container">
+    <article class="start">
+        <h1 class="mt-5 text-center">The DOGGY Type Test</h1>
+        <button type="button" class="btn btn-primary mt-5" onclick="start();">Start</button>
+    </article>
+    <article class="question">
+        <div class="progress mt-5">
+            <div class="progress-bar" role="progressbar" style="width: calc(100/12*1%)"></div>
+        </div>
+        <h2 id="title" class="text-center mt-5">문제</h2>
+        <input id="type" type="hidden" value="EI">
+        <button id="A" type="button" class="btn btn-primary mt-5">Primary</button>
+        <button id="B" type="button" class="btn btn-primary mt-5">Primary</button>
+    </article>
+    <article class="result mt-5">
+        <img id="img" src="test.jpg" class="mt-5" alt="test">
+        <h2 id="animal" class="text-center mt-5">댕댕이이름</h2>
+        <p id="explain" class="text-center mt-5">설명</p>
+        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+        <div class="share addthis_inline_share_toolbox_16c2"></div>
+    </article>
+
+    <article class="google_ad mt-5">
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8079002042139777"
+        crossorigin="anonymous"></script>
+        <!-- 댕댕이테스트 -->
+        <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-8079002042139777"
+            data-ad-slot="6795752330"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </article>
+
+    <input type="hidden" id="EI" value="0">
+    <input type="hidden" id="SN" value="0">
+    <input type="hidden" id="TF" value="0">
+    <input type="hidden" id="JP" value="0">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+    <script>
+        var num = 1;
+        var q = {
+            1: {"title": "If I were a doggo, would I participate in a dog party?", "type":"EI", "A":"Of course. I love it.", "B":"I like a more cozy time."},
+            2: {"title": "Do you say hello to your new friend first?", "type":"EI", "A":"Yes, I like to make new friends.", "B":"I think it will take some time to get close."},
+            3: {"title": "When I make Puppuccino(The doggo dessert),", "type":"EI", "A":"I want to make it with many friends.", "B":"I prefer to make it by myself."},
+            4: {"title": "After watching the 101 Dalmatians movie,", "type":"SN", "A":"I think the movie was fun.", "B":"I imagine playing with my Dalmatians friends.."},
+            5: {"title": "When I make Puppuccino,(The doggo dessert)", "type":"SN", "A":"I follow the recipe.", "B":"I make my own recipe."},
+            6: {"title": "When I see a balloon when I go for a walk in the park,", "type":"SN", "A":" I remember that it is blue and shaped like a rabbit.", "B":"I imagine flying with it."},
+            7: {"title": "If the sky is cloudy and rainy before taking a walk", "type":"TF", "A":"I wear a raincoat.", "B":"I am upset that the weather is cloudy."},
+            8: {"title": "When a friend says he is sick,", "type":"TF", "A":"I ask where and why he is sick.", "B":"I ask him if he is okay or if he is sick a lot."},
+            9: {"title": "If everyone is not interested in me,", "type":"TF", "A":"I do what I do because I don't care.", "B":"I do what I'm doing although I'm feeling a bit down."},
+            10: {"title": "Today's walk,", "type":"JP", "A":"I prefer my walking course.", "B":"I will find a new course."},
+            11: {"title": "What needs to be done,", "type":"JP", "A":"I do it right away.", "B":" I put it off because I have time."},
+            12: {"title": "Decision Type", "type":"JP", "A":"I make decisions right away.", "B":"I put off my decision."}
+        }
+        var result = {
+            "ISTJ" : {"animal" : "Responsible Labrador retriever", "explain" : "This personality type tends to pursue stability and likes to be recognized. Labrador retriever people tend to prefer clear guidelines and hate adventure. They are intelligent, have no bravado or exaggeration, and like to be responsible and regular. In addition, they are realistic, consistent, excellent in organizational management, and dislike people who are intemperate and challenging.", "img" : "ISTJ.png"},
+            "ISFJ" : {"animal" : "Gentle Conton de tulear", "explain" : "This personality type pursues a loving, well-mannered and stable life. Conton de Tulear people are good at caring for others and prefer predictable work. This type avoids conflict, finds it difficult to criticize and criticize, and does not forget the scars of the past. They value peaceful daily life and feel happy helping others. In addition, they are patient, abide by laws and rules, and are burdened with high status.", "img" : "ISFJ.png"},
+            "INFJ" : {"animal" : "Insightful Pungsan", "explain" : "This personality type prefers deep relationships with people and is excellent at observing things and phenomena. The people of PungSan are inspirational and sympathetic and do not act aimlessly. They are rational, decisive, imaginative and creative, and seek perfection. They value their time alone and are thoughtful. In addition, they maintain a gentle relationship with others, are good at motivating, and value trust.", "img" : "INFJ.png"},
+            "INTJ" : {"animal" : "Visionary Greyhound", "explain" : "This personality type believes in one's reason with a cool judgment, is confident and independent. Greyhound people are passionate, determined, creative, and strategic in their work. They are strong and consistent in logical discussions, and like to prove rational and practical. They like to set up a vision and plan, and they accept challenges and study them. In addition, it takes time to get close.", "img" : "INTJ.png"},
+            "ISTP" : {"animal" : "Intelligent Jindo", "explain" : "This personality type has a high interest in tools and machines, is good with hands, is independent, and tends to explore directly. Jindo people are generous to others, but they dislike their own strict and boring work and prefer extreme sports. They are stronger in the practice of learning by body than theory and seek freedom than strict rules. In addition, rather than preferring appointments, they enjoy the thrill of testing their fate.", "img" : "ISTP.png"},
+            "ISFP" : {"animal" : "Considerate Cocker spaniel", "explain" : "This personality type has a developed artistic sense and is easily hurt, but has a picky and delicate mind. Cocker spacniel people are keen, free, and adventurous, so they don't fit well with school, but they cherish their time with precious people and can deeply sympathize with others. They like nature, pursue equality, have high camaraderie, and try to do the right thing.", "img" : "ISFP.png"},
+            "INFP" : {"animal" : "Imagining Shiba Inu", "explain" : "This personality type is romantic and has a deep passion. Shiba Inu people tend to keep their promises and pursue a consistent life, are emotional and delicate. They rely on their intuition a lot and fantasize a lot about their ideal life. They are inquisitive about people, quick to read other people's feelings, and sometimes quiet and serious. In addition, they understand their feelings correctly and can look cold on the outside, but they are warm.", "img" : "INFP.png"},
+            "INTP" : {"animal" : "Strategic Chihuahua", "explain" : "This personality type is silent, reserved, and very objective. Chihuahua people are honest, straightforward, miscellaneous knowledge, and quick to understand everything. They are experts in areas of interest and are excellent at observing and analyzing various aspects accurately. They are good at finding contradictions, dislike regulation and oppression, and do not care about the evaluation of others. ", "img" : "INTP.png"},
+            "ESTP" : {"animal" : "Playful Maltese", "explain" : "This personality type is cheerful, energetic, joked and faithful to the present. Maltese people are positive, adaptable, sensible and witty. They are excellent at solving problems and are curious and adventurous. They are distracting, quick-witted, and clever. Sometimes, they get bored quickly.", "img" : "ESTP.png"},
+            "ESFP" : {"animal" : "Sweet Poodle", "explain" : "This personality type likes fancy things, is sociable, and unbiased. The people of Poodle have a lot of connections and passion, but they also like calm people. They sense other people's emotions well and enjoy group life with an open mind. They are told that they are generous, forgiving, and easy-going. They know how to enjoy life and are easily moved and vulnerable to temptation.", "img" : "ESFP.png"},
+            "ENFP" : {"animal" : "Energetic Samoyed", "explain" : "This personality type is a free spirit and attractive. Samoyed people have a wide network and are good at noticing the other person's feelings. They enjoy creative challenges and are versatile in various fields. They like social but independent activities and prefer to be alone. In addition, they hate repetitive events and believe in fateful encounters. They are good at coordinating relationships and persuading others.", "img" : "ENFP.png"},
+            "ENTP" : {"animal" : "Positive Pomeranian", "explain" : "This personality type is imaginative and intelligent. The Pomeranian people like new things and have a sense of rebellion against the interference of others. They have their own charisma and stubbornness. They are adventurous, adaptable, and capable of crisis management for the future. Plus, they have a lot of allies, also they have a lot of enemies. But they don't really care.", "img" : "ENTP.png"},
+            "ESTJ" : {"animal" : "Realistic Alaskan malamute", "explain" : "This personality type is straightforward and straightforward. They value logical, analytical, and objective judgment. The people of Alaska malamute think rules are important, and although they lack planning, originality and creativity, they speak and act quickly. They have their own methods and value benefits and outcomes. In addition, they have good manners and responsibility.", "img" : "ESTJ.png"},
+            "ESFJ" : {"animal" : "Thoughtful Golden retriever", "explain" : "This personality type gains energy from relationships with others and is strong in social activities. Golden Retriever people hate conflict and try to relieve stress together. They tend to be lonely, cherishing friendship and past memories. They value the opinions of others, pursue stability, and are dependent. In addition, they like to form a consensus with others and like recognition and praise.", "img" : "ESFJ.png"},
+            "ENFJ" : {"animal" : "Generous Welsh corgi", "explain" : "This personality type is witty, humorous, and has excellent empathy for others, making it comfortable. They are thoughtful but have their own beliefs and can accept everyone without prejudice. Welsh corgi people believe in their senses and often think and imagine generous and idealistic things. In addition, they want to be lonely and loved by everyone.", "img" : "ENFJ.png"},
+            "ENTJ" : {"animal" : "Trustworthy Border collie", "explain" : "This personality type has a cold judgment, independent thinking, and a high sense of responsibility. Border collie people can objectively judge their abilities and have excellent logical thinking. Although they are not sensitive to other people's feelings, they are excellent at presenting and proving evidence, and they are good at summarizing, making strategies, and keeping plans. In addition, they prefer freedom, do not need help from others, and have a high sense of accomplishment when they do it on their own.", "img" : "ENTJ.png"},
+        }
+        function start(){
+            $(".start").hide();
+            $(".question").show();
+            next();
+        }
+        $("#A").click(function(){
+            var type = $("#type").val();
+            var preValue = $("#"+type).val();
+            $("#"+type).val(parseInt(preValue)+1);
+            next();
+        });
+        $("#B").click(function(){
+            next();
+        });
+        function next(){
+            if(num == 13) {
+                $(".question").hide();
+                $(".result").show();
+                var mbti = "";
+                ($("#EI").val() < 2) ? mbti+="I" : mbti+="E";
+                ($("#SN").val() < 2) ? mbti+="N" : mbti+="S";
+                ($("#TF").val() < 2) ? mbti+="F" : mbti+="T";
+                ($("#JP").val() < 2) ? mbti+="P" : mbti+="J";
+                $("#img").attr("src", result[mbti]["img"]);
+                $("#animal").html(result[mbti]["animal"]);
+                $("#explain").html(result[mbti]["explain"]);
+            } else {
+                $(".progress-bar").attr('style', 'width: calc(100/12*'+num+'%)');
+                $("#title").html(q[num]["title"]);
+                $("#type").val(q[num]["type"]);
+                $("#A").html(q[num]["A"]);
+                $("#B").html(q[num]["B"]);
+                num++;
+            }
+        }
+    </script>
+    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-63a16b684a7ec42e"></script>
+</body>
+</html>
